@@ -7,15 +7,15 @@ const Signup = () => {
         <label>
             Name
         </label>
-        <input type='text' placeholder='Enter the name'/>
+        <input type='name' placeholder='Enter the name'/>
         <label>Role</label>
-        <input type='text' placeholder='Enter the Role'/>
+        <input type='role' placeholder='Enter the Role'/>
         <label>Speciality(if a doctor):</label>
-        <input type='text' placeholder='Enter the speciality...'/>
+        <input type='speciality' placeholder='Enter the speciality...'/>
         <label>Disease(if a patient):</label>
-        <input type='text' placeholder='Enter the disease'/>
+        <input type='disease' placeholder='Enter the disease'/>
         <label>Address:</label>
-        <textarea type='text' placeholder='Enter the address details here'/>
+        <textarea type='address' placeholder='Enter the address details here'/>
        <button className='bg-lime-600 text-white'>Submit</button>
       </form>
     </div>
