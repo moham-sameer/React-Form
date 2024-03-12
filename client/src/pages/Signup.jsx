@@ -33,13 +33,13 @@ const Signup = () => {
  }
   return (
     <div className='flex flex-col items-center justify-center h-screen'>
-    <form onSubmit={SubmitHandler} className='flex flex-col space-y-3'>
+    <form onSubmit={SubmitHandler} className='flex flex-col space-y-8 w-[19rem] border border-slate-300 p-9 shadow-md'>
      <input onChange={changeHandler} id='username' type='username' placeholder='Enter your username...' required/>
      <input onChange={changeHandler} id='password' type='password' placeholder='Enter your password...' required/>
-      <button className='bg-gray-500 text-white font-serif'>Sign Up</button>
+      <button className='bg-green-800 text-white font-serif '>Sign Up</button>
     </form>
     <div className='text-red-600 font-semibold'>{error? <span>user not found or wrong credentials!</span>:null}</div>
-    <div>Already a User ? <Link to='/'><span>Sign In</span></Link></div>
+    <div>Already a User ? <Link to='/'><span className='text-blue-600 underline'>Sign In</span></Link></div>
     </div>
   )
 }
