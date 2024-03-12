@@ -1,19 +1,16 @@
 const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
-    name:{
+    username:{
         type:String,
         required:[true, "must provide username"],
-        unique:true,
         trime:true,
     },
-    role:String,
-    speciality:String,
-    disease:String,
-    address:{
+    password:{
         type:String,
-        required:[true,"must provide the address"]
+        required:[true,"must provide the password"]
     },
+   
 })
 
-module.exports = mongoose.model('data',productSchema)
+module.exports = mongoose.model('auths',productSchema)

@@ -1,23 +1,45 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { signInFailure, signInStart, signInSuccess } from '../../redux/userSlice'
 const Signup = () => {
+  const history = useNavigate()
+  const dispatch = useDispatch()
+  const {currentUser,loading,error} = useSelector((state)=>state.user)
+  const [userType,setUserType] = useState('')
+  const [authData,setAuthData] = useState()
+  const changeHandler = (e)=>{
+       setAuthData({...authData,
+      [e.target.id]:e.target.value
+      })
+  }
+ const SubmitHandler = async(e)=>{
+ try {
+  e.preventDefault()
+  dispatch(signInStart())
+  const data = await axios.post("http://localhost:3000/auth/signup",authData)
+  if(data.success === false){
+   dispatch(signInFailure(data.message))
+   return;
+  }   
+  dispatch(signInSuccess(data))
+    
+  
+ } catch (error) {
+   dispatch(signInFailure(error.message))
+ }
+ history('/')
+ }
   return (
-    <div className='flex items-center justify-center h-screen'>
-      <form className='flex flex-col'>
-        <label>
-            Name
-        </label>
-        <input type='name' placeholder='Enter the name'/>
-        <label>Role</label>
-        <input type='role' placeholder='Enter the Role'/>
-        <label>Speciality(if a doctor):</label>
-        <input type='speciality' placeholder='Enter the speciality...'/>
-        <label>Disease(if a patient):</label>
-        <input type='disease' placeholder='Enter the disease'/>
-        <label>Address:</label>
-        <textarea type='address' placeholder='Enter the address details here'/>
-       <button className='bg-lime-600 text-white'>Submit</button>
-      </form>
+    <div className='flex flex-col items-center justify-center h-screen'>
+    <form onSubmit={SubmitHandler} className='flex flex-col space-y-3'>
+     <input onChange={changeHandler} id='username' type='username' placeholder='Enter your username...' required/>
+     <input onChange={changeHandler} id='password' type='password' placeholder='Enter your password...' required/>
+      <button className='bg-gray-500 text-white font-serif'>Sign Up</button>
+    </form>
+    <div className='text-red-600 font-semibold'>{error? <span>user not found or wrong credentials!</span>:null}</div>
+    <div>Already a User ? <Link to='/'><span>Sign In</span></Link></div>
     </div>
   )
 }

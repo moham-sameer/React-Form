@@ -5,12 +5,17 @@
      res.send(result)
      console.log(result)
  }
- const getFiles = async(req,res)=>{
-    const data = await Data.find({})
+ const getPatients = async(req,res)=>{
+    const data = await Data.find({role:"Patient"})
+    res.send(data)
+    console.log(data)
+ }
+ const getDoctors = async(req,res)=>{
+    const data = await Data.find({role:"Doctor"})
     res.send(data)
     console.log(data)
  }
 
  module.exports = {
-    Create,getFiles
+    Create,getPatients,getDoctors
  }
