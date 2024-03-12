@@ -19,13 +19,13 @@ const Patient = () => {
             <tr>
               <th>Name</th>
               <th>Role</th>
-              <th>Speciality</th>
+              <th>Disease</th>
               <th>Address</th>
             </tr>
               <tr>
                 <td>{items.name}</td>
                 <td>{items.role}</td>
-                <td>{items.speciality}</td>
+                <td>{items.disease}</td>
                 <td>{items.address}</td>
               </tr>
           </table>
