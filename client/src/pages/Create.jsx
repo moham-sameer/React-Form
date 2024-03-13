@@ -22,7 +22,7 @@ const Create = () => {
  }
   return (
     <div className='flex items-center justify-center h-screen'>
-      <form onSubmit={submitHandler} className='flex flex-col'>
+      <form onSubmit={submitHandler} className='flex flex-col w-[29rem] border border-gray-300 p-8 shadow-xl space-y-4 '>
         <label>
             Name
         </label>
@@ -35,7 +35,7 @@ const Create = () => {
         <input id='disease' onChange={changeHandler} type='disease' placeholder='Enter the disease'/>
         <label>Address:</label>
         <textarea id='address' onChange={changeHandler} type='address' placeholder='Enter the address details here'/>
-       <button className='bg-lime-600 text-white'>Submit</button>
+       <button className='bg-lime-600 text-white font-serif'>Submit</button>
       </form>
     </div>
   )
